@@ -6,15 +6,6 @@
     <title>Prequirúrgico Hospital de Illapel</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        #webview {
-            width: 100%;
-            height: 60vh; /* Ajusta la altura del WebView */
-            border: none;
-            display: none; /* Oculta inicialmente */
-        }
-        .webview-active {
-            display: block !important;
-        }
         .menu-hidden {
             display: none !important;
         }
@@ -44,7 +35,6 @@
                 REGISTRO DE LLAMADO
             </button>
         </div>
-        <iframe id="webview"></iframe>
         <button id="homeButton" onclick="returnToMenu()" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base mt-4 hidden">
             Volver al Inicio
         </button>
@@ -52,21 +42,12 @@
     </div>
     <script>
         function loadUrl(url) {
-            const webview = document.getElementById('webview');
-            const menuSections = document.querySelectorAll('.menu-section');
-            const homeButton = document.getElementById('homeButton');
-            webview.src = url;
-            webview.classList.add('webview-active');
-            menuSections.forEach(section => section.classList.add('menu-hidden'));
-            homeButton.classList.remove('hidden');
+            window.open(url, '_blank'); // Abre en nueva pestaña
         }
 
         function returnToMenu() {
-            const webview = document.getElementById('webview');
             const menuSections = document.querySelectorAll('.menu-section');
             const homeButton = document.getElementById('homeButton');
-            webview.src = '';
-            webview.classList.remove('webview-active');
             menuSections.forEach(section => section.classList.remove('menu-hidden'));
             homeButton.classList.add('hidden');
         }
