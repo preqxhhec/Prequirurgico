@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prequirúrgico Hospital de Illapel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        #webview {
+            width: 100%;
+            height: 60vh; /* Ajusta la altura del WebView */
+            border: none;
+            display: none; /* Oculta inicialmente */
+        }
+        .webview-active {
+            display: block !important;
+        }
+        .menu-hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
+        <h1 class="text-xl sm:text-2xl font-bold mb-4 text-center menu-section">
+            <img src="https://www.hospitalillapel.cl/institucional/wp-content/uploads/2019/07/LOGO-CHICO-03_hospital_vert.png" alt="Prequirúrgico Hospital de Illapel Logo" class="mx-auto mb-2" style="max-height: 100px;">
+            Prequirúrgico Hospital de Illapel
+        </h1>
+        <div class="flex flex-col space-y-3 menu-section">
+            <button onclick="loadUrl('https://script.google.com/macros/s/AKfycby_geBuy78MVfzZQf5mwZWlPhjAoRLppGn5FCT0toAju7d7N4EqognZeORVzERvJbVt/exec')"
+                    class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base">
+                LISTA DE ESPERA
+            </button>
+            <button onclick="loadUrl('https://script.google.com/macros/s/AKfycbzYf-vOcMrOquenIFpCaty7DuoeA434AmGKYe8h8xo1SUKjg47YciwLu0sfjvh4G0J24Q/exec')"
+                    class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base">
+                PREANESTESIA
+            </button>
+            <button onclick="loadUrl('https://script.google.com/macros/s/AKfycby0AUlRdlZXpWU0tJDEBLGg-B2sRssFcSDr98aJNbKqcXqkTCUJIz8cXO8nn6lpFa-m/exec')"
+                    class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base">
+                PROTOCOLOS OP
+            </button>
+            <button onclick="loadUrl('https://script.google.com/macros/s/AKfycbx683ZqO6cXhNVY1BiWFQef1iotHZH1AhooGJl3NqGavhHuDWYeH0RWThpvez0vApU/exec')"
+                    class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base">
+                REGISTRO DE LLAMADO
+            </button>
+        </div>
+        <iframe id="webview"></iframe>
+        <button id="homeButton" onclick="returnToMenu()" class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded text-sm sm:text-base mt-4 hidden">
+            Volver al Inicio
+        </button>
+        <div class="text-center mt-4 text-sm">Dr. Danilo Nava Jefe del Proceso Quirúrgico</div>
+    </div>
+    <script>
+        function loadUrl(url) {
+            const webview = document.getElementById('webview');
+            const menuSections = document.querySelectorAll('.menu-section');
+            const homeButton = document.getElementById('homeButton');
+            webview.src = url;
+            webview.classList.add('webview-active');
+            menuSections.forEach(section => section.classList.add('menu-hidden'));
+            homeButton.classList.remove('hidden');
+        }
+
+        function returnToMenu() {
+            const webview = document.getElementById('webview');
+            const menuSections = document.querySelectorAll('.menu-section');
+            const homeButton = document.getElementById('homeButton');
+            webview.src = '';
+            webview.classList.remove('webview-active');
+            menuSections.forEach(section => section.classList.remove('menu-hidden'));
+            homeButton.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
